@@ -10,7 +10,7 @@ module com.celebrate.crdb_bank {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-//            requires eu.hansolo.tilesfx;
+    requires eu.hansolo.tilesfx;
 
 
     opens com.celebrate.crdb_bank to javafx.fxml;
