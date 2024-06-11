@@ -1,6 +1,8 @@
 package com.celebrate.crdb_bank.Views;
 
 import com.celebrate.crdb_bank.Controllers.Client.ClientController;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -15,24 +17,43 @@ import java.util.logging.Logger;
 public class ViewFactory {
     // Client  Views
     // Encapsulation
+    private final StringProperty clientSelectedMenuItem;
     private AnchorPane dashboardView;
+    private AnchorPane transactionsView;
     private static final Logger LOGGER = Logger.getLogger(ViewFactory.class.getName());
 
     // Default constructor
     public ViewFactory() {
+        this.clientSelectedMenuItem = new SimpleStringProperty("");
     }
 
-    // Getter/Accessor Method
+    // Getter Method - Get Client Selected Menu Item
+    public StringProperty getClientSelectedMenuItem() {
+        return clientSelectedMenuItem;
+    }
+
+    // Getter/Accessor Method - Get Dashboard View
     public AnchorPane getDashboardView() {
         if (dashboardView == null) {
             try {
                 dashboardView = new FXMLLoader(getClass().getResource("/Fxml/Client/Dashboard.fxml")).load();
             } catch (IOException ex) {
-                // e.printStackTrace();
                 LOGGER.log(Level.SEVERE, "Dashboard not found: {0}", ex.getMessage());
             }
         }
         return dashboardView;
+    }
+
+    // Getter Method - Get Transaction View
+    public AnchorPane getTransactionsView() {
+        if (transactionsView == null) {
+            try {
+                transactionsView = new FXMLLoader(getClass().getResource("/Fxml/Client/Transactions.fxml")).load();
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Transactions View not found: {0}", ex.getMessage());
+            }
+        }
+        return transactionsView;
     }
 
     // Setter/Mutator Method - Show Login Window

@@ -22,6 +22,7 @@ public class DashboardController implements Initializable {
     public TextArea message_fld;
     public Button send_money_btn;
 
+    // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
