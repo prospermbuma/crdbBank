@@ -70,4 +70,9 @@ public class ViewFactory {
         stage.show();
     }
 
+    // Setter Method - Close stage
+    public void closeStage(Stage stage) {
+        stage.close();
+    }
+
 }
