@@ -17,7 +17,7 @@ public class App extends Application {
         // Place the scene in the stage
         stage.setScene(scene);
         // Set the stage title
-        stage.setTitle("Login");
+        stage.setTitle("CRDB - Bank Management System");
         // Set Application logo
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/logo/logo2.png"))));
         // Prevent/Allow users to resize the stage
