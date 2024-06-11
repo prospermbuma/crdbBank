@@ -12,7 +12,7 @@ public class App extends Application {
     // Implement start method in the Application class
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/Client/ClientMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         // Place the scene in the stage
         stage.setScene(scene);

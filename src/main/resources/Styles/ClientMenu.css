@@ -22,7 +22,7 @@
     -fx-padding: 10;
 }
 
-.title_container FontAwesomeIcon {
+.title_container FontAwesomeIconView {
     -fx-fill: #017817;
 }
 
@@ -53,7 +53,7 @@
     -fx-cursor: hand;
 }
 
-.menu_container Button FontAwesomeIcon {
+.menu_container Button FontAwesomeIconView {
     -fx-fill: #017817;
 }
 
@@ -67,7 +67,7 @@
     -fx-effect: dropshadow(three-pass-box, #DDDDDD, 0, 0, 0, 0);
 }
 
-.alt_menu_btn FontAwesomeIcon {
+.alt_menu_btn FontAwesomeIconView {
     -fx-fill: #FFFFFF;
 }
 
@@ -102,6 +102,6 @@
     -fx-cursor: hand;
 }
 
-.report_container Button FontAwesomeIcon {
+.report_container Button FontAwesomeIconView {
     -fx-fill: #FFFFFF;
 }
