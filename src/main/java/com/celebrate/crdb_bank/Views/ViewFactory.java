@@ -20,12 +20,17 @@ public class ViewFactory {
     private final StringProperty clientSelectedMenuItem;
     private AnchorPane dashboardView;
     private AnchorPane transactionsView;
+    private AnchorPane accountsView;
     private static final Logger LOGGER = Logger.getLogger(ViewFactory.class.getName());
 
     // Default constructor
     public ViewFactory() {
         this.clientSelectedMenuItem = new SimpleStringProperty("");
     }
+
+    /*===========================================
+    # Client View
+    ============================================*/
 
     // Getter Method - Get Client Selected Menu Item
     public StringProperty getClientSelectedMenuItem() {
@@ -56,6 +61,18 @@ public class ViewFactory {
         return transactionsView;
     }
 
+    // Getter Method - Get Account View
+    public AnchorPane getAccountsView() {
+        if (accountsView == null) {
+            try {
+                accountsView = new FXMLLoader(getClass().getResource("/Fxml/Client/Accounts.fxml")).load();
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Account View not found: {0}", ex.getMessage());
+            }
+        }
+        return accountsView;
+    }
+
     // Setter/Mutator Method - Show Login Window
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
@@ -84,7 +101,7 @@ public class ViewFactory {
         // Set the stage title
         stage.setTitle("CRDB - Bank Management System");
         // Set Application logo
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/logo/logo2.png"))));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/logo/logo1.png"))));
         // Prevent/Allow users to resize the stage
         stage.setResizable(false);
         // Display the stage
