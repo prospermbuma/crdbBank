@@ -58,6 +58,8 @@ public class Model {
     /*===========================================
     # Admin - Data
     ============================================*/
+    private final Admin admin;
+    private boolean adminLoginSuccessFlag;
 
     // Constructor
     // Private Constructor: The constructor is declared private to prevent external object creation
@@ -73,7 +75,8 @@ public class Model {
         /*===========================================
          # Admin - Data
          ============================================*/
-
+        this.adminLoginSuccessFlag = false;
+        this.admin = new Admin("", "");
     }
 
     // Getter Method - Get Model Instance
@@ -90,7 +93,7 @@ public class Model {
         return model;
     }
 
-    // Getter Method - Get View Factory
+    // Getter - Get View Factory
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
@@ -113,11 +116,11 @@ public class Model {
     /*===========================================
     # Client - Methods
     ============================================*/
-    // Setters
+    // Setter - Set Client Login Success Flag
     public void setClientLoginSuccessFlag(boolean flag) {
         this.clientLoginSuccessFlag = flag;
     }
-
+    // Setter - Evaluate Client Login Credentials
     public void evaluateClientCred(String pAddress, String password) throws SQLException {
         CheckingAccount checkingAccount;
         SavingsAccount savingsAccount;
@@ -140,11 +143,11 @@ public class Model {
         }
     }
 
-    // Getters
+    // Getter - Get Client Login Success Flag
     public boolean getClientLoginSuccessFlag() {
         return this.clientLoginSuccessFlag;
     }
-
+    // Getter - Get Client
     public Client getClient() {
         return this.client;
     }
@@ -152,4 +155,32 @@ public class Model {
     /*===========================================
     # Admin - Methods
     ============================================*/
+    // Setter - Set Client Login Success Flag
+    public void setAdminLoginSuccessFlag(boolean flag) {
+        this.adminLoginSuccessFlag = flag;
+    }
+    // Setter - Evaluate Admin Login Credentials
+    public void evaluateAdminCred(String username, String password) throws SQLException {
+        ResultSet rs = databaseDriver.getAdminData(username, password);
+        try {
+            if (rs.isBeforeFirst()) {
+                this.admin.usernameProperty().set(rs.getString("Username"));
+                this.admin.passwordProperty().set(rs.getString("Password"));
+                this.adminLoginSuccessFlag = true;
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
+            throw e;
+        }
+    }
+
+    // Getter - Get Admin Login Success Flag
+    public boolean getAdminLoginSuccessFlag() {
+        return this.adminLoginSuccessFlag;
+    }
+    // Getter - Get Admin
+    public Admin getAdmin() {
+        return this.admin;
+    }
+
 }

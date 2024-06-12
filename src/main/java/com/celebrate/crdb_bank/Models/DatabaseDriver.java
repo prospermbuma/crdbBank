@@ -39,14 +39,24 @@ public class DatabaseDriver {
         return rs;
     }
 
-
-
     /*===========================================
     # Admin - Methods only for Admin
     ============================================*/
+    public ResultSet getAdminData(String username, String password) throws SQLException {
+        PreparedStatement stmt;
+        ResultSet rs;
+        try {
+            stmt = this.conn.prepareStatement("SELECT * FROM Admins WHERE Username = ? AND Password = ?");
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            rs = stmt.executeQuery();
 
-
-
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
+            throw e;
+        }
+        return rs;
+    }
 
     /*===========================================
     # Utility Methods - Methods for both
