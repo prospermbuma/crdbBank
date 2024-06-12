@@ -4,8 +4,6 @@ import com.celebrate.crdb_bank.Controllers.Admin.AdminController;
 import com.celebrate.crdb_bank.Controllers.Client.ClientController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -19,6 +17,16 @@ import java.util.logging.Logger;
 
 public class ViewFactory {
     /*===========================================
+    # Login Account Type Property
+    ============================================*/
+    private AccountType loginAccountType;
+
+    /*===========================================
+    # Logger
+    ============================================*/
+    private static final Logger LOGGER = Logger.getLogger(ViewFactory.class.getName());
+
+    /*===========================================
     # Client View Properties
     ============================================*/
     private final ObjectProperty<ClientMenuOptions> clientSelectedMenuItem;
@@ -27,26 +35,35 @@ public class ViewFactory {
     private AnchorPane accountsView;
 
     /*===========================================
-    # Logger
-    ============================================*/
-    private static final Logger LOGGER = Logger.getLogger(ViewFactory.class.getName());
-
-    /*===========================================
      # Admin View Properties
      ============================================*/
-    private final StringProperty adminSelectedMenuItem;
+    private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
     private AnchorPane createClientView;
 
     /*===========================================
     # Class constructor
     ============================================*/
     public ViewFactory() {
+        this.loginAccountType = AccountType.ADMIN;
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
-        this.adminSelectedMenuItem = new SimpleStringProperty("");
+        this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
     /*===========================================
-    # Client View Methods
+    # Login Account Type Methods
+    ============================================*/
+    // Getter Method - Get Login Account Type
+    public AccountType getLoginAccountType() {
+        return loginAccountType;
+    }
+
+    // Setter Method
+    public void setLoginAccountType(AccountType loginAccountType) {
+        this.loginAccountType = loginAccountType;
+    }
+
+    /*===========================================
+     # Client View Methods
     ============================================*/
     // Getter Method - Get Client Selected Menu Item
     public ObjectProperty<ClientMenuOptions> getClientSelectedMenuItem() {
@@ -101,7 +118,7 @@ public class ViewFactory {
     # Admin View Methods
     ============================================*/
     // Getter Method - Get Admin Selected Menu Item
-    public StringProperty getAdminSelectedMenuItem() {
+    public ObjectProperty<AdminMenuOptions> getAdminSelectedMenuItem() {
         return adminSelectedMenuItem;
     }
 

@@ -1,6 +1,7 @@
 package com.celebrate.crdb_bank.Controllers.Admin;
 
 import com.celebrate.crdb_bank.Models.Model;
+import com.celebrate.crdb_bank.Views.AdminMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
@@ -28,22 +29,22 @@ public class AdminMenuController implements Initializable {
 
     // Setter Method - On Create-Client button click event set admin selected menu item to Dashboard
     private void onCreateClient() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("CreateClient");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CREATE_CLIENT);
     }
 
     // Setter Method - On transaction button click event set admin selected menu item to Transactions
     private void onClient() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Client");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CLIENT);
     }
 
     // Setter Method - On accounts button click event set admin selected menu item to Profile
     private void onDeposit() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Deposit");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.DEPOSIT);
     }
 
     // Setter Method - On accounts button click event set admin selected menu item to Logout
     private void onLogout() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set("Logout");
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.LOGOUT);
     }
 
 

@@ -1,6 +1,8 @@
 package com.celebrate.crdb_bank.Controllers;
 
 import com.celebrate.crdb_bank.Models.Model;
+import com.celebrate.crdb_bank.Views.AccountType;
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -12,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-    public ChoiceBox acc_selector;
+    public ChoiceBox<AccountType> acc_selector;
     public Label payee_address_lbl;
     public TextField payee_address_fld;
     public TextField password_fld;
@@ -22,6 +24,9 @@ public class LoginController implements Initializable {
     // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        acc_selector.setItems(FXCollections.observableArrayList(AccountType.CLIENT, AccountType.ADMIN));
+        acc_selector.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
+        acc_selector.valueProperty().addListener(observable -> Model.getInstance().getViewFactory().setLoginAccountType(acc_selector.getValue()));
         login_btn.setOnAction(e -> onLogin());
     }
 
