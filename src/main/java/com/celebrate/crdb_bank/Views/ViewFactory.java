@@ -194,8 +194,11 @@ public class ViewFactory {
         // Set the stage title
         stage.setTitle("CRDB - Bank Management System");
         // Set Application logo
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/logo/logo1.png"))));
-        // Prevent/Allow users to resize the stage
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/logo/logo1.png"))));
+        /* - The beneath also serves the same purpose as of the above
+        # stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/logo/logo1.png"))));
+        - */
+        // Prevent users to resize the stage
         stage.setResizable(false);
         // Display the stage
         stage.show();
