@@ -1,6 +1,7 @@
 package com.celebrate.crdb_bank.Controllers.Client;
 
 import com.celebrate.crdb_bank.Models.Model;
+import com.celebrate.crdb_bank.Views.ClientMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import java.net.URL;
@@ -32,32 +33,32 @@ public class ClientMenuController implements Initializable {
 
     // Setter Method - On dashboard button click event set client selected menu item to Dashboard
     private void onDashboard() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Dashboard");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.DASHBOARD);
     }
 
     // Setter Method - On transaction button click event set client selected menu item to Transactions
     private void onTransactions() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Transactions");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSACTIONS);
     }
 
     // Setter Method - On accounts button click event set client selected menu item to Accounts
     private void onAccounts() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Accounts");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
     }
 
     // Setter Method - On accounts button click event set client selected menu item to Profile
     private void onProfile() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Profile");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.PROFILE);
     }
 
     // Setter Method - On accounts button click event set client selected menu item to Logout
     private void onLogout() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Logout");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.LOGOUT);
     }
 
     // Setter Method - On accounts button click event set client selected menu item to Report
     private void onReport() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Report");
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.REPORT);
     }
 
 }
