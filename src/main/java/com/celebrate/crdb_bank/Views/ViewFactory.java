@@ -40,6 +40,7 @@ public class ViewFactory {
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
     private AnchorPane createClientView;
     private AnchorPane clientsView;
+    private AnchorPane depositView;
 
     /*===========================================
     # Class constructor
@@ -145,6 +146,18 @@ public class ViewFactory {
             }
         }
         return clientsView;
+    }
+
+    // Getter Method - Get Deposit View
+    public AnchorPane getDepositView() {
+        if (depositView == null) {
+            try {
+                depositView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Deposit.fxml")).load();
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Deposit View not found: {0}", ex.getMessage());
+            }
+        }
+        return depositView;
     }
 
     // Setter Method - Show Admin Window
