@@ -9,23 +9,22 @@
 
 <AnchorPane prefHeight="50.0" prefWidth="750.0" styleClass="client_cell_container"
             stylesheets="@../../Styles/ClientCell.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.celebrate.crdb_bank.Controllers.Admin.ClientCellController">
-   <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="29.0" size="20" AnchorPane.leftAnchor="14.0"
-                    AnchorPane.topAnchor="14.0"/>
-   <HBox layoutX="92.0" layoutY="-25.0" prefHeight="40.0" prefWidth="550.0" AnchorPane.leftAnchor="60.0"
-         AnchorPane.topAnchor="5.0">
-      <Label fx:id="fName_lbl" text="Daniel"/>
-      <Label fx:id="lName_lbl" layoutX="10.0" layoutY="10.0" text="John"/>
-      <Label fx:id="payee_addr_lbl" layoutX="44.0" layoutY="10.0" text="\@dJohn1"/>
-      <Label fx:id="ch_acc_lbl" layoutX="69.0" layoutY="10.0" styleClass="acc_display_lbl" text="25469921"/>
-      <Label fx:id="sv_acc_lbl" layoutX="120.0" layoutY="10.0" styleClass="acc_display_lbl" text="233303213"/>
-      <Label fx:id="date_lbl" layoutX="172.0" layoutY="10.0" text="2024-06-07"/>
-   </HBox>
-   <Button fx:id="delete_btn" layoutX="684.0" layoutY="12.0" mnemonicParsing="false" styleClass="delete_btn"
-           text="Delete" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="12.0">
-      <graphic>
-         <FontAwesomeIconView glyphName="TRASH_ALT" size="15"/>
-      </graphic>
-   </Button>
+            xmlns:fx="http://javafx.com/fxml/1">
+    <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="29.0" size="20" AnchorPane.leftAnchor="14.0"
+                         AnchorPane.topAnchor="14.0"/>
+    <HBox layoutX="92.0" layoutY="-25.0" prefHeight="40.0" prefWidth="550.0" AnchorPane.leftAnchor="60.0"
+          AnchorPane.topAnchor="5.0">
+        <Label fx:id="fName_lbl" text="Daniel"/>
+        <Label fx:id="lName_lbl" layoutX="10.0" layoutY="10.0" text="John"/>
+        <Label fx:id="payee_addr_lbl" layoutX="44.0" layoutY="10.0" text="\@dJohn1"/>
+        <Label fx:id="ch_acc_lbl" layoutX="69.0" layoutY="10.0" styleClass="acc_display_lbl" text="25469921"/>
+        <Label fx:id="sv_acc_lbl" layoutX="120.0" layoutY="10.0" styleClass="acc_display_lbl" text="233303213"/>
+        <Label fx:id="date_lbl" layoutX="172.0" layoutY="10.0" text="2024-06-07"/>
+    </HBox>
+    <Button fx:id="delete_btn" layoutX="684.0" layoutY="12.0" mnemonicParsing="false" styleClass="delete_btn"
+            text="Delete" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="12.0">
+        <graphic>
+            <FontAwesomeIconView glyphName="TRASH_ALT" size="15"/>
+        </graphic>
+    </Button>
 </AnchorPane>
