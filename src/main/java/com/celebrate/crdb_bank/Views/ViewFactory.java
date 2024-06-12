@@ -39,12 +39,13 @@ public class ViewFactory {
      ============================================*/
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
     private AnchorPane createClientView;
+    private AnchorPane clientsView;
 
     /*===========================================
     # Class constructor
     ============================================*/
     public ViewFactory() {
-        this.loginAccountType = AccountType.ADMIN;
+        this.loginAccountType = AccountType.CLIENT;
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }
@@ -132,6 +133,18 @@ public class ViewFactory {
             }
         }
         return createClientView;
+    }
+
+    // Getter Method - Get Clients View
+    public AnchorPane getClientsView() {
+        if (clientsView == null) {
+            try {
+                clientsView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Clients.fxml")).load();
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Clients View not found: {0}", ex.getMessage());
+            }
+        }
+        return clientsView;
     }
 
     // Setter Method - Show Admin Window

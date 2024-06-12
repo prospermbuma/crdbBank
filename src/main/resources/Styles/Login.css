@@ -37,16 +37,17 @@
 }
 
 #choice-box-popup-menu {
-    -fx-background-color: #ECF39E;
+    -fx-background-color: #FFFFFF;
+    /*-fx-background-color: #ECF39E;*/
+}
+
+#choice-prompt-text {
+    -fx-font-weight: 400;
 }
 
 /*===========================================
 # Login Form
 ============================================*/
-#choice-prompt-text {
-    -fx-font-weight: 400;
-}
-
 .login_form_container {
     -fx-spacing: 15;
     -fx-alignment: top_left;

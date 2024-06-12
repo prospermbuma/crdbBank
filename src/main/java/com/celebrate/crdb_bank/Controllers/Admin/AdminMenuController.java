@@ -34,7 +34,7 @@ public class AdminMenuController implements Initializable {
 
     // Setter Method - On transaction button click event set admin selected menu item to Transactions
     private void onClient() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CLIENT);
+        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CLIENTS);
     }
 
     // Setter Method - On accounts button click event set admin selected menu item to Profile

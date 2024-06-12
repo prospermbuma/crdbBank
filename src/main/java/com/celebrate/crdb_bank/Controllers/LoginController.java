@@ -32,8 +32,13 @@ public class LoginController implements Initializable {
 
     // Setter Method - Set/Show Client Window on onLogin Button Click
     public void onLogin() {
-        // Show client window
-        Model.getInstance().getViewFactory().showClientWindow();
+        if (acc_selector.getValue() == AccountType.CLIENT) {
+            // Show Client Window
+            Model.getInstance().getViewFactory().showClientWindow();
+        } else {
+            // Show Admin Window
+            Model.getInstance().getViewFactory().showAdminWindow();
+        }
         // A trick to close stage in Java FX since JavaFX does not have a built-in functionality
         // for closing stage in transition between stages
         Stage stage = (Stage) login_btn.getScene().getWindow();
