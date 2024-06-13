@@ -46,7 +46,7 @@ public class ViewFactory {
     # Class constructor
     ============================================*/
     public ViewFactory() {
-        this.loginAccountType = AccountType.ADMIN;
+        this.loginAccountType = AccountType.CLIENT;
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
     }

@@ -23,6 +23,7 @@ public class DatabaseDriver {
     /*===========================================
     # Client - Methods only for Client
     ============================================*/
+    // LOGIN
     public ResultSet getClientData(String pAddress, String password) throws SQLException {
         PreparedStatement stmt;
         ResultSet rs;
@@ -42,6 +43,7 @@ public class DatabaseDriver {
     /*===========================================
     # Admin - Methods only for Admin
     ============================================*/
+    // LOGIN
     public ResultSet getAdminData(String username, String password) throws SQLException {
         PreparedStatement stmt;
         ResultSet rs;
@@ -62,5 +64,7 @@ public class DatabaseDriver {
     # Utility Methods - Methods for both
     ============================================*/
 
-
+    public Connection getConn() {
+        return conn;
+    }
 }

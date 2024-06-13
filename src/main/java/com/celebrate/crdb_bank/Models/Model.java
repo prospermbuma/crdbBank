@@ -120,6 +120,7 @@ public class Model {
     public void setClientLoginSuccessFlag(boolean flag) {
         this.clientLoginSuccessFlag = flag;
     }
+
     // Setter - Evaluate Client Login Credentials
     public void evaluateClientCred(String pAddress, String password) throws SQLException {
         CheckingAccount checkingAccount;
@@ -136,6 +137,8 @@ public class Model {
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 this.client.dateCreatedProperty().set(date);
                 this.clientLoginSuccessFlag = true;
+            } else {
+                this.clientLoginSuccessFlag = false;  // Reset flag if credentials are not correct
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
@@ -147,6 +150,7 @@ public class Model {
     public boolean getClientLoginSuccessFlag() {
         return this.clientLoginSuccessFlag;
     }
+
     // Getter - Get Client
     public Client getClient() {
         return this.client;
@@ -159,6 +163,7 @@ public class Model {
     public void setAdminLoginSuccessFlag(boolean flag) {
         this.adminLoginSuccessFlag = flag;
     }
+
     // Setter - Evaluate Admin Login Credentials
     public void evaluateAdminCred(String username, String password) throws SQLException {
         ResultSet rs = databaseDriver.getAdminData(username, password);
@@ -167,6 +172,8 @@ public class Model {
                 this.admin.usernameProperty().set(rs.getString("Username"));
                 this.admin.passwordProperty().set(rs.getString("Password"));
                 this.adminLoginSuccessFlag = true;
+            } else {
+                this.adminLoginSuccessFlag = false;  // Reset flag if credentials are not correct
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
@@ -178,6 +185,7 @@ public class Model {
     public boolean getAdminLoginSuccessFlag() {
         return this.adminLoginSuccessFlag;
     }
+
     // Getter - Get Admin
     public Admin getAdmin() {
         return this.admin;

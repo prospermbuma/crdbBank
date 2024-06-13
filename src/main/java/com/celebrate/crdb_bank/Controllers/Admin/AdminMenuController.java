@@ -4,15 +4,20 @@ import com.celebrate.crdb_bank.Models.Model;
 import com.celebrate.crdb_bank.Views.AdminMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class AdminMenuController implements Initializable {
     public Button create_client_btn;
     public Button clients_btn;
     public Button deposit_btn;
     public Button logout_btn;
+
+    // Logger
+    private static final Logger LOGGER = Logger.getLogger(AdminMenuController.class.getName());
 
     // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
     @Override
@@ -44,7 +49,10 @@ public class AdminMenuController implements Initializable {
 
     // Setter Method - On accounts button click event set admin selected menu item to Logout
     private void onLogout() {
-        Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.LOGOUT);
+        // Get Window Stage
+        Stage stage = (Stage) deposit_btn.getScene().getWindow();
+        Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
     }
 
 

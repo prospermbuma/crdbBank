@@ -21,6 +21,8 @@
     <Line endY="20.0" layoutX="297.0" layoutY="20.0" AnchorPane.bottomAnchor="18.5" AnchorPane.leftAnchor="300.0"/>
     <Label fx:id="receiver_lbl" layoutX="356.0" layoutY="22.0" styleClass="trans_payeeAddr_lbl" text="Daniel"
            AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="22.0"/>
+    <FontAwesomeIconView fx:id="notify_icon"  AnchorPane.leftAnchor="440.0"
+                         AnchorPane.topAnchor="22.0" glyphName="BELL" size="17"/>
     <Label fx:id="amount_lbl" layoutX="486.0" layoutY="16.0" styleClass="trans_amount_lbl" text="200K"
            AnchorPane.rightAnchor="14" AnchorPane.topAnchor="16.0">
         <graphic>

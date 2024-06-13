@@ -4,8 +4,11 @@ import com.celebrate.crdb_bank.Models.Model;
 import com.celebrate.crdb_bank.Views.ClientMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class ClientMenuController implements Initializable {
     public Button dashboard_btn;
@@ -14,6 +17,9 @@ public class ClientMenuController implements Initializable {
     public Button profile_btn;
     public Button logout_btn;
     public Button report_btn;
+
+    // Logger
+    private static final Logger LOGGER = Logger.getLogger(ClientMenuController.class.getName());
 
     // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
     @Override
@@ -53,7 +59,9 @@ public class ClientMenuController implements Initializable {
 
     // Setter Method - On accounts button click event set client selected menu item to Logout
     private void onLogout() {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.LOGOUT);
+       Stage stage = (Stage) report_btn.getScene().getWindow();
+        Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
     }
 
     // Setter Method - On accounts button click event set client selected menu item to Report
