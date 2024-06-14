@@ -32,12 +32,16 @@ public class DatabaseDriver {
             stmt.setString(1, pAddress);
             stmt.setString(2, password);
             rs = stmt.executeQuery();
-
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
             throw e;
         }
         return rs;
+    }
+
+    // Method to get client data based on session
+    public String getLoggedInClientPayeeAddress() throws SQLException {
+        return com.celebrate.crdb_bank.Models.SessionManager.getInstance().getLoggedInClientPayeeAddress();
     }
 
     /*===========================================

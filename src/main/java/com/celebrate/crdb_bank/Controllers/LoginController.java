@@ -1,6 +1,7 @@
 package com.celebrate.crdb_bank.Controllers;
 
 import com.celebrate.crdb_bank.Models.Model;
+import com.celebrate.crdb_bank.Models.SessionManager;
 import com.celebrate.crdb_bank.Views.AccountType;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
@@ -22,8 +23,6 @@ public class LoginController implements Initializable {
     public Button login_btn;
     public Label error_lbl;
 
-
-    // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         acc_selector.setItems(FXCollections.observableArrayList(AccountType.CLIENT, AccountType.ADMIN));
@@ -97,11 +96,11 @@ public class LoginController implements Initializable {
                 try {
                     Model.getInstance().evaluateClientCred(payee_address_fld.getText(), payee_password_fld.getText());
                     if (Model.getInstance().getClientLoginSuccessFlag()) {
+                        // Set session data for client
+                        SessionManager.getInstance().setLoggedInClientPayeeAddress(payee_address_fld.getText());
                         // Show Client Window
                         Model.getInstance().getViewFactory().showClientWindow();
                         // Close stage
-                        // A trick to close stage in Java FX since JavaFX does not have a built-in functionality
-                        // for closing stage in transition between stages
                         Model.getInstance().getViewFactory().closeStage(stage);
                     } else {
                         payee_address_fld.setText("");
@@ -127,8 +126,6 @@ public class LoginController implements Initializable {
                         // Show Admin Window
                         Model.getInstance().getViewFactory().showAdminWindow();
                         // Close stage
-                        // A trick to close stage in Java FX since JavaFX does not have a built-in functionality
-                        // for closing stage in transition between stages
                         Model.getInstance().getViewFactory().closeStage(stage);
                     } else {
                         username_fld.setText("");
@@ -143,7 +140,5 @@ public class LoginController implements Initializable {
                 error_lbl.setVisible(true);
             }
         }
-
     }
-
 }

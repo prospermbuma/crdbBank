@@ -17,20 +17,33 @@ public class TransactionCellController implements Initializable {
     public Label receiver_lbl;
     public Label amount_lbl;
 
-    private final Transaction transaction;
+    private Transaction transaction;
 
-    // Constructor
     public TransactionCellController(Transaction transaction) {
         this.transaction = transaction;
     }
 
-    // Getter
-     public Transaction getTransaction() {
-        return transaction;
-     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (transaction != null) {
+            trans_date_lbl.setText(transaction.getDate().toString());
+            sender_lbl.setText(transaction.getSender().toString());
+            receiver_lbl.setText(transaction.getReceiver().toString());
+            amount_lbl.setText(transaction.getAmount().toString());
 
+            // Determine whether to show in or out icon based on transaction direction
+            if (transaction.isIncoming()) {
+                in_icon.setVisible(true);
+                out_icon.setVisible(false);
+            } else {
+                in_icon.setVisible(false);
+                out_icon.setVisible(true);
+            }
+        }
+    }
+
+    // Setter method to set the transaction
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
     }
 }

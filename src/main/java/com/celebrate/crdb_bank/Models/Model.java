@@ -137,6 +137,8 @@ public class Model {
                 LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
                 this.client.dateCreatedProperty().set(date);
                 this.clientLoginSuccessFlag = true;
+                // Set session data
+                com.celebrate.crdb_bank.Models.SessionManager.getInstance().setLoggedInClientPayeeAddress(pAddress);
             } else {
                 this.clientLoginSuccessFlag = false;  // Reset flag if credentials are not correct
             }
@@ -159,7 +161,7 @@ public class Model {
     /*===========================================
     # Admin - Methods
     ============================================*/
-    // Setter - Set Client Login Success Flag
+    // Setter - Set Admin Login Success Flag
     public void setAdminLoginSuccessFlag(boolean flag) {
         this.adminLoginSuccessFlag = flag;
     }
@@ -190,5 +192,6 @@ public class Model {
     public Admin getAdmin() {
         return this.admin;
     }
+
 
 }

@@ -3,23 +3,20 @@ package com.celebrate.crdb_bank.Models;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Admin {
-    // Instance Variables
-    private final StringProperty username;
-    private final StringProperty password;
+public class Admin extends User {
 
     // Constructor
     public Admin(String username, String password) {
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
+        super(username, password);
     }
 
     // Getters
     public StringProperty usernameProperty() {
-        return username;
+        return new SimpleStringProperty(this, "username");
     }
 
     public StringProperty passwordProperty() {
-        return password;
+        return new SimpleStringProperty(this, "password");
     }
+
 }
