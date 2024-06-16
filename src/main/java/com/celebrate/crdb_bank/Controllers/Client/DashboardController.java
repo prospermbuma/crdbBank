@@ -2,7 +2,6 @@ package com.celebrate.crdb_bank.Controllers.Client;
 
 import com.celebrate.crdb_bank.Models.Model;
 import com.celebrate.crdb_bank.Models.SessionManager;
-import com.celebrate.crdb_bank.Models.Transaction;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -74,6 +73,7 @@ public class DashboardController implements Initializable {
         // Set login date from session
         login_date.setText(SessionManager.getInstance().getSessionDate());
     }
+
     // Method to populate the transaction list
     private void populateTransactionList(String payeeAddress) throws SQLException {
         populateTransList(payeeAddress, transaction_listview, LOGGER);

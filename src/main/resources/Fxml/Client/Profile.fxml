@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="profile_container" stylesheets="@../../Styles/Profile.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.celebrate.crdb_bank.Controllers.Client.ProfileController">
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Personal Details" AnchorPane.leftAnchor="35.0"
+         AnchorPane.topAnchor="50.0"/>
+   <VBox layoutX="45.6" layoutY="74.4" prefHeight="534.0" prefWidth="763.0" styleClass="form_container"
+         AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="100.0">
+      <Label text="First Name:"/>
+      <TextField fx:id="firstName"/>
+      <Label layoutX="10.0" layoutY="10.0" text="Last Name:"/>
+      <TextField fx:id="lastName" layoutX="10.0" layoutY="28.0"/>
+      <Label layoutX="10.0" layoutY="68.0" text="Current Password:"/>
+      <PasswordField fx:id="current_pass"/>
+      <Label layoutX="10.0" layoutY="127.0" text="New Password:"/>
+      <PasswordField fx:id="new_pass" layoutX="10.0" layoutY="145.0"/>
+      <Label layoutX="10.0" layoutY="171.0" text="Confirm Password:"/>
+      <PasswordField fx:id="confirm_pass" layoutX="10.0" layoutY="189.0"/>
+      <Button fx:id="save_btn" alignment="CENTER" mnemonicParsing="false" text="Save changes">
+         <graphic>
+            <FontAwesomeIconView glyphName="SAVE" size="20"/>
+         </graphic>
+      </Button>
+   </VBox>
+   <Label fx:id="error_lbl" layoutX="62.0" layoutY="666.0" styleClass="error_lbl"
+          AnchorPane.leftAnchor="35.0"/>
+</AnchorPane>

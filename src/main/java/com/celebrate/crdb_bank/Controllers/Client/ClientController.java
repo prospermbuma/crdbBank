@@ -8,7 +8,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ClientController implements Initializable {
-    // Encapsulation
     public BorderPane client_parent;
 
     // Abstract Setter Method - Implementing polymorphism by overriding initialize method of abstract class Initializable
@@ -19,6 +18,7 @@ public class ClientController implements Initializable {
                 case TRANSACTIONS ->
                         client_parent.setCenter(Model.getInstance().getViewFactory().getTransactionsView());
                 case ACCOUNTS -> client_parent.setCenter(Model.getInstance().getViewFactory().getAccountsView());
+                case PROFILE -> client_parent.setCenter(Model.getInstance().getViewFactory().getProfileView());
                 default -> client_parent.setCenter(Model.getInstance().getViewFactory().getDashboardView());
             }
         });

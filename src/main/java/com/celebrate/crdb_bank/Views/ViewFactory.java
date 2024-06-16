@@ -32,6 +32,7 @@ public class ViewFactory {
     private AnchorPane dashboardView;
     private AnchorPane transactionsView;
     private AnchorPane accountsView;
+    private AnchorPane profileView;
 
     /*===========================================
      # Admin View Properties
@@ -105,6 +106,18 @@ public class ViewFactory {
             }
         }
         return accountsView;
+    }
+
+    // Getter Method - Get Profile View
+    public AnchorPane getProfileView() {
+        if (profileView == null) {
+            try {
+                profileView = new FXMLLoader(getClass().getResource("/Fxml/Client/Profile.fxml")).load();
+            } catch (IOException ex) {
+                LOGGER.log(Level.SEVERE, "Profile View not found: {0}", ex.getMessage());
+            }
+        }
+        return profileView;
     }
 
     // Setter Method - Show Client Window
