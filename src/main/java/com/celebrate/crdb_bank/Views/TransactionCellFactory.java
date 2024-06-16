@@ -9,15 +9,14 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-// INHERITANCE
 public class TransactionCellFactory extends ListCell<Transaction> {
     // Logger
-    private static final Logger LOGGER = Logger.getLogger(ViewFactory.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TransactionCellFactory.class.getName());
 
     @Override
     protected void updateItem(Transaction transaction, boolean empty) {
         super.updateItem(transaction, empty);
-        if (empty) {
+        if (empty || transaction == null) {
             setText(null);
             setGraphic(null);
         } else {

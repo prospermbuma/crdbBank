@@ -1,7 +1,6 @@
 package com.celebrate.crdb_bank.Controllers.Client;
 
 import com.celebrate.crdb_bank.Models.Client;
-import com.celebrate.crdb_bank.Models.Transaction;
 import javafx.fxml.Initializable;
 
 import java.net.URL;

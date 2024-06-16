@@ -1,51 +1,86 @@
 package com.celebrate.crdb_bank.Models;
 
-import javafx.beans.property.*;
+import javafx.fxml.Initializable;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
-public class Transaction {
+public class Transaction implements Initializable {
 
     // Instance Properties
-    private final StringProperty sender;
-    private final StringProperty receiver;
-    private final DoubleProperty amount;
-    private final ObjectProperty<LocalDate> date;
-    private final StringProperty message;
-    private final Boolean isIncoming;
+    public String sender;
+    public String receiver;
+    public Double amount;
+    public LocalDate date;
+    public String message;
+    public Boolean isIncoming;
+
+    // Logger
+    private static final Logger LOGGER = Logger.getLogger(Transaction.class.getName());
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     // Constructor
     public Transaction(String sender, String receiver, Double amount, LocalDate date, String message, boolean incoming) {
-        this.sender = new SimpleStringProperty(sender);
-        this.receiver = new SimpleStringProperty(receiver);
-        this.amount = new SimpleDoubleProperty(amount);
-        this.date = new SimpleObjectProperty<>(date);
-        this.message = new SimpleStringProperty(message);
+        this.sender = sender;
+        this.receiver = receiver;
+        this.amount = amount;
+        this.date = date;
+        this.message = message;
         this.isIncoming = incoming;
     }
 
     // Methods
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setIncoming(Boolean isIncoming) {
+        this.isIncoming = isIncoming;
+    }
+
     public boolean isIncoming() {
         return isIncoming;
     }
 
-    public StringProperty getSender() {
+    public String getSender() {
         return this.sender;
     }
 
-    public StringProperty getReceiver() {
+    public String getReceiver() {
         return this.receiver;
     }
 
-    public DoubleProperty getAmount() {
+    public Double getAmount() {
         return this.amount;
     }
 
-    public ObjectProperty<LocalDate> getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 
-    public StringProperty getMessage() {
+    public String getMessage() {
         return this.message;
     }
 

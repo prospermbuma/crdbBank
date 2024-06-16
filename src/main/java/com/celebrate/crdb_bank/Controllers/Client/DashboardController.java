@@ -2,6 +2,7 @@ package com.celebrate.crdb_bank.Controllers.Client;
 
 import com.celebrate.crdb_bank.Models.Model;
 import com.celebrate.crdb_bank.Models.SessionManager;
+import com.celebrate.crdb_bank.Models.Transaction;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -25,6 +26,11 @@ public class DashboardController implements Initializable {
 
     // Logger
     private static final Logger LOGGER = Logger.getLogger(DashboardController.class.getName());
+
+    public TextField payee_fld;
+    public TextField amount_fld;
+    public TextArea message_fld;
+    public Button send_money_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -55,20 +61,43 @@ public class DashboardController implements Initializable {
             if (rs.next()) {
                 // Populate UI elements with client data
                 user_name.setText("Hi, " + rs.getString("FirstName"));
-                checking_bal.setText("TZS, " + rs.getString("CheckingBalance"));
+                checking_bal.setText("TZS " + rs.getString("CheckingBalance"));
                 checking_acc_num.setText(rs.getString("CheckingAccountNumber"));
-                savings_bal.setText("TZS, " +rs.getString("SavingsBalance"));
+                savings_bal.setText("TZS " + rs.getString("SavingsBalance"));
                 savings_acc_num.setText(rs.getString("SavingsAccountNumber"));
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error executing SQL query: {0}", e.getMessage());
         }
-
         // Fetch transaction history
         populateTransactionList(clientPayeeAddress);
-
         // Set login date from session
         login_date.setText(SessionManager.getInstance().getSessionDate());
+    }
+    // Method to populate the transaction list
+    private void populateTransactionList(String payeeAddress) throws SQLException {
+        populateTransList(payeeAddress, transaction_listview, LOGGER);
+    }
+
+    static void populateTransList(String payeeAddress, ListView<String> transactionListview, Logger logger) throws SQLException {
+        String query = "SELECT Sender, Receiver, Amount, Date, Message FROM Transactions WHERE Sender = ? OR Receiver = ?";
+        ResultSet rs;
+        try (PreparedStatement preparedStatement = Model.getInstance().getDatabaseDriver().getConn().prepareStatement(query)) {
+            preparedStatement.setString(1, payeeAddress);
+            preparedStatement.setString(2, payeeAddress);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String transactions = String.format("%s -> %s: %s on %s (Message: %s)",
+                        rs.getString("Sender"), rs.getString("Receiver"),
+                        rs.getString("Amount"), rs.getString("Date"),
+                        rs.getString("Message"));
+                transactionListview.getItems().add(transactions);
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error fetching transaction history: {0}", e.getMessage());
+            throw e;
+        }
     }
 
     // Method to fetch the logged-in client's PayeeAddress
@@ -82,24 +111,4 @@ public class DashboardController implements Initializable {
         return payeeAddress;
     }
 
-    // Method to populate the transaction list
-    private void populateTransactionList(String payeeAddress) {
-        String query = "SELECT Sender, Receiver, Amount, Date, Message FROM Transactions WHERE Sender = ? OR Receiver = ?";
-        ResultSet rs;
-        try (PreparedStatement preparedStatement = Model.getInstance().getDatabaseDriver().getConn().prepareStatement(query)) {
-            preparedStatement.setString(1, payeeAddress);
-            preparedStatement.setString(2, payeeAddress);
-            rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                String transaction = String.format("%s -> %s: %s on %s (Message: %s)",
-                        rs.getString("Sender"), rs.getString("Receiver"),
-                        rs.getString("Amount"), rs.getString("Date"),
-                        rs.getString("Message"));
-                transaction_listview.getItems().add(transaction);
-            }
-        } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error fetching transaction history: {0}", e.getMessage());
-        }
-    }
 }

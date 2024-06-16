@@ -27,8 +27,8 @@ public class TransactionCellController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (transaction != null) {
             trans_date_lbl.setText(transaction.getDate().toString());
-            sender_lbl.setText(transaction.getSender().toString());
-            receiver_lbl.setText(transaction.getReceiver().toString());
+            sender_lbl.setText(transaction.getSender());
+            receiver_lbl.setText(transaction.getReceiver());
             amount_lbl.setText(transaction.getAmount().toString());
 
             // Determine whether to show in or out icon based on transaction direction
@@ -45,5 +45,10 @@ public class TransactionCellController implements Initializable {
     // Setter method to set the transaction
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
+    }
+
+    // Getter method to get the transaction
+    public Transaction getTransaction() {
+        return transaction;
     }
 }

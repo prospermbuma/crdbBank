@@ -499,7 +499,7 @@
     </routine>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-06-12.17:50:21</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-16.13:19:39</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1590,26 +1590,110 @@
     <argument id="554" parent="190">
       <Position>1</Position>
     </argument>
-    <table id="555" parent="191" name="sqlite_master">
+    <table id="555" parent="191" name="CheckingAccounts"/>
+    <table id="556" parent="191" name="Clients"/>
+    <table id="557" parent="191" name="SavingsAccounts"/>
+    <table id="558" parent="191" name="Transactions"/>
+    <table id="559" parent="191" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="556" parent="555" name="type">
+    <column id="560" parent="555" name="Balance">
+      <DasType>REAL|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="561" parent="555" name="AccountNumber">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="562" parent="555" name="TransactionLimit">
+      <DasType>REAL|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="563" parent="555" name="Owner">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="564" parent="555" name="Date">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="565" parent="556" name="PayeeAddress">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="566" parent="556" name="Date">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="567" parent="557" name="Balance">
+      <DasType>REAL|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="568" parent="557" name="AccountNumber">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="569" parent="557" name="WithdrawalLimit">
+      <DasType>REAL|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="570" parent="557" name="Owner">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="571" parent="557" name="Date">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="572" parent="558" name="Sender">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="557" parent="555" name="name">
+    <column id="573" parent="558" name="Receiver">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="558" parent="555" name="tbl_name">
+    <column id="574" parent="558" name="Amount">
+      <DasType>REAL|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="575" parent="558" name="Date">
+      <DasType>TEXT|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="576" parent="558" name="Message">
+      <DasType>TEXT|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="577" parent="559" name="type">
+      <DasType>TEXT|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="578" parent="559" name="name">
+      <DasType>TEXT|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="579" parent="559" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="559" parent="555" name="rootpage">
+    <column id="580" parent="559" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="560" parent="555" name="sql">
+    <column id="581" parent="559" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
